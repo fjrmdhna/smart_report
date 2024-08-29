@@ -1,9 +1,8 @@
 import React from 'react';
-import { MapContainer, TileLayer, Marker } from 'react-leaflet';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import MarkerClusterGroup from 'react-leaflet-cluster';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { Card } from 'react-bootstrap';
 
 // Custom Icon untuk Marker
 const customIcon = new L.Icon({
@@ -24,12 +23,25 @@ const MapComponent = ({ mapMarkers }) => {
           attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <MarkerClusterGroup>
-          {mapMarkers.map((marker, index) => (
-            <Marker key={index} position={[marker.lat, marker.lng]} icon={customIcon} />
-          ))}
+          {mapMarkers.map((marker, index) => {
+            // Debugging untuk memastikan bahwa data marker termasuk region tersedia
+            console.log('Marker data:', marker);
+
+            return (
+              <Marker key={index} position={[marker.lat, marker.lng]} icon={customIcon}>
+                <Popup>
+                  <div>
+                    <strong>Site Name:</strong> {marker.siteName || 'N/A'}<br />
+                    <strong>Region:</strong> {marker.region || 'N/A'}<br />
+                    <strong>Vendor:</strong> {marker.vendor || 'N/A'}
+                  </div>
+                </Popup>
+              </Marker>
+            );
+          })}
         </MarkerClusterGroup>
       </MapContainer>
-      <div className="map-total text-center mt-2">
+      <div className="map-total">
         <p>Total: {mapMarkers.length}</p>
       </div>
     </div>

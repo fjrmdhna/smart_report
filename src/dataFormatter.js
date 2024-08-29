@@ -15,6 +15,9 @@ export const processDataFromExcel = (sheet) => {
   const regions = {};
 
   jsonData.forEach(row => {
+    // Determine the key for region (supports region, Region, or REGION)
+    const regionKey = Object.keys(row).find(key => key.toLowerCase() === 'region');
+
     // Prepare marker data for map
     if (row.LAT && row.LONG && !isNaN(parseFloat(row.LAT)) && !isNaN(parseFloat(row.LONG))) {
       markers.push({
@@ -22,6 +25,7 @@ export const processDataFromExcel = (sheet) => {
         lng: parseFloat(row.LONG),
         siteName: row.SITE_NAME || 'Unknown',
         vendor: row.Vendor || 'Unknown',
+        region: regionKey ? row[regionKey] : 'Unknown', // Using the correct region key
       });
     }
 
@@ -64,7 +68,7 @@ export const processDataFromExcel = (sheet) => {
     }
 
     // Count projects by region
-    const region = row.REGION || 'Unknown';
+    const region = regionKey ? row[regionKey] : 'Unknown';
     if (!regions[region]) {
       regions[region] = 0;
     }
