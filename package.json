@@ -2,7 +2,7 @@
   "name": "dashboard-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://fjrmdhna.github.io/-protoDashboard",
+  "homepage": "https://fjrmdhna.github.io/smart-reporting",
   "dependencies": {
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
@@ -14,7 +14,7 @@
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.4",
-    "gh-pages": "^6.1.1",
+    "gh-pages": "^6.2.0",
     "jquery": "^3.7.1",
     "leaflet": "^1.9.4",
     "leaflet-control-geocoder": "^2.4.0",
