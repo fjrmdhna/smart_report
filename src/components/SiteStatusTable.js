@@ -4,7 +4,6 @@ import React from 'react';
 const SiteStatusTable = ({ data }) => {
   return (
     <div>
-      <h3>Site Status</h3>
       <table className="table table-bordered">
         <thead>
           <tr>
