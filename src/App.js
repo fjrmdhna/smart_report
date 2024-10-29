@@ -1,6 +1,6 @@
 // src/App.js
 import React from 'react';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom'; // Menggunakan HashRouter
 import Dashboard from './components/Dashboard';
 import Notification from './components/Notification'; // Pastikan Anda memiliki komponen ini
 import Planning from './components/Planning';         // Pastikan Anda memiliki komponen ini
@@ -23,7 +23,7 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/notification" element={<Notification />} />
             <Route path="/planning" element={<Planning />} />
-            {/* Tambahkan route lainnya di sini jika diperlukan */}
+            {/* Tambahkan route lainnya jika diperlukan */}
           </Routes>
         </div>
         <Footer />
