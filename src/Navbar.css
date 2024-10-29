@@ -1,0 +1,62 @@
+/* Navbar styling */
+.custom-navbar {
+    background-color: white;
+    border-bottom: 2px solid #f1c40f; /* Garis bawah kuning */
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo dan link brand pada navbar */
+.custom-navbar .navbar-brand-custom {
+    display: flex;
+    align-items: center;
+    color: #4d4d4f; /* Warna abu-abu gelap */
+    font-weight: bold;
+    font-size: 1.5em;
+    text-decoration: none;
+    padding-left: 10px; /* Tambahkan padding kiri untuk memberi jarak */
+}
+
+.custom-navbar .navbar-logo {
+    height: 40px;
+    margin-right: 15px;
+}
+
+/* Links pada navbar */
+.custom-navbar .navbar-links {
+    display: flex;
+    align-items: center;
+}
+
+.custom-navbar .navbar-links .nav-link {
+    color: #4D4D4F; /* Warna default abu-abu gelap */
+    font-weight: bold;
+    margin-left: 15px;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.custom-navbar .navbar-links .nav-link:hover {
+    color: #e74c3c; /* Warna merah saat hover */
+}
+
+/* Responsive navbar adjustments */
+@media (max-width: 768px) {
+    .custom-navbar {
+        padding: 0.5rem 1rem; /* Pastikan padding kiri dan kanan ada pada layar kecil */
+    }
+
+    .custom-navbar .navbar-brand-custom {
+        font-size: 1.2em;
+        padding-left: 10px; /* Tambahkan padding kiri untuk logo di layar kecil */
+    }
+
+    .custom-navbar .navbar-logo {
+        height: 30px;
+        margin-right: 10px; /* Kurangi jarak pada layar kecil */
+    }
+
+    .custom-navbar .navbar-toggler {
+        padding: 0.25rem 0.75rem;
+    }
+}

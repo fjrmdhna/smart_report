@@ -1,13 +1,100 @@
-body {
+/* Global styling */
+body, html {
+  background-color: #ffffff;
+  color: #4d4d4d;
+  font-family: Arial, sans-serif;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+h1, h2, h3 {
+  font-weight: bold;
+  color: #4d4d4d;
+}
+
+/* Button styling */
+.btn-primary {
+  background-color: #e74c3c;  /* Merah lembut untuk tombol */
+  border-color: #e74c3c;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #ff9999;
+  border-color: #ff9999;
+}
+
+/* Card styling */
+.card {
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #ffffff;
+  border: 1px solid #f1c40f; /* Border kuning lembut */
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Table styling */
+.table th {
+  background-color: #e74c3c; 
+  color: white;
+  text-align: center;
+}
+
+.table tbody tr:hover {
+  background-color: #f9e79f; 
+}
+
+/* Footer styling */
+footer {
+  background-color: #f1c40f;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-size: 1em;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+}
+
+/* Links styling */
+a {
+  color: #e74c3c;
+  text-decoration: none;
+}
+
+a:hover {
+  color: #ff9999;
+  text-decoration: underline;
+}
+
+/* Custom file input styling */
+.custom-file-input {
+  margin: 10px 0;
+}
+
+.custom-file-input:hover {
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .dashboard-container {
+    margin: 10px;
+  }
+
+  .card {
+    box-shadow: none; /* Hapus bayangan untuk layar kecil */
+  }
+
+  .table {
+    font-size: 0.9em;
+  }
+}
+
+.map-container {
+  width: 100%;
+  height: 500px;
+  margin-top: 20px; /* Jarak dari filter ke map */
 }
