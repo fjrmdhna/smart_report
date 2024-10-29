@@ -34,28 +34,28 @@ const PlanVsActual = ({ data }) => {
     labels: convertedLabels,
     datasets: [
       {
-        label: 'Rencana RFI',
+        label: 'Plan RFI',
         data: data.planRFI,
         backgroundColor: '#FFCB05',
         borderColor: '#FFCB05',
         borderWidth: 1,
       },
       {
-        label: 'Aktual RFI',
+        label: 'Actual RFI',
         data: data.actualRFI,
         backgroundColor: '#32BCAD',
         borderColor: '#32BCAD',
         borderWidth: 1,
       },
       {
-        label: 'Rencana RFS',
+        label: 'Plan RFS',
         data: data.planRFS,
         backgroundColor: '#FFD700',
         borderColor: '#FFD700',
         borderWidth: 1,
       },
       {
-        label: 'Aktual RFS',
+        label: 'Actual RFS',
         data: data.actualRFS,
         backgroundColor: '#1E90FF',
         borderColor: '#1E90FF',
@@ -85,7 +85,7 @@ const PlanVsActual = ({ data }) => {
       x: {
         title: { 
           display: true, 
-          text: 'Bulan-Tahun', 
+          text: 'Month-Year', 
           font: { size: 14, weight: 'bold' } 
         },
         ticks: { font: { size: 12 } },
@@ -93,7 +93,7 @@ const PlanVsActual = ({ data }) => {
       y: {
         title: { 
           display: true, 
-          text: 'Jumlah', 
+          text: 'Total', 
           font: { size: 14, weight: 'bold' } 
         },
         beginAtZero: true,

@@ -18,6 +18,7 @@ const Dashboard = () => {
     planRFS: [],
     actualRFS: []
   });
+  const [filteredSiteStatus, setFilteredSiteStatus] = useState({}); // Tambahkan state ini
   const [selectedFilters, setSelectedFilters] = useState({
     region: 'All',
     priority: 'All',
@@ -36,6 +37,7 @@ const Dashboard = () => {
         const result = await processDataFromExcel(event.target.result);
         setData(result);
         setFilteredMarkers(result.markers); // Awalnya, semua markers ditampilkan
+        setFilteredSiteStatus(result.siteStatus); // Awalnya, siteStatus dari semua data
       };
       reader.readAsArrayBuffer(file);
     }
@@ -49,11 +51,19 @@ const Dashboard = () => {
     }
   }, [selectedFilters, data.markers]);
 
-  // Update planVsActualData ketika filteredMarkers berubah
+  // Update planVsActualData dan filteredSiteStatus ketika filteredMarkers berubah
   useEffect(() => {
     if (filteredMarkers) {
       const newPlanVsActualData = generatePlanVsActualData(filteredMarkers);
       setPlanVsActualData(newPlanVsActualData);
+
+      // Hitung siteStatus berdasarkan filteredMarkers
+      const statusCounts = {};
+      filteredMarkers.forEach(marker => {
+        const status = marker.status || 'Unknown';
+        statusCounts[status] = (statusCounts[status] || 0) + 1;
+      });
+      setFilteredSiteStatus(statusCounts);
     }
   }, [filteredMarkers]);
 
@@ -101,7 +111,7 @@ const Dashboard = () => {
         <Col md={6} className="mb-4">
           <Card className="h-100">
             <Card.Body>
-              <SiteStatusTable data={data.siteStatus} />
+              <SiteStatusTable data={filteredSiteStatus} />
             </Card.Body>
           </Card>
         </Col>
