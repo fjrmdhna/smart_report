@@ -42,15 +42,15 @@ const SetMapBounds = ({ markers }) => {
 
 const CoverageMap = ({ markers }) => {
   return (
-    <div style={{ height: '500px', width: '100%' }}>
+    <div style={{ width: '100%', height: '100%' }}> {/* Menggunakan height: '100%' */}
       <MapContainer 
         center={[-2.5489, 118.0149]} 
         zoom={5} 
-        style={{ height: '100%', width: '100%', borderRadius: '10px' }}
+        style={{ height: '100%', width: '100%' }}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          attribution='&copy; OpenStreetMap contributors'
         />
         <SetMapBounds markers={markers} /> {/* Komponen untuk mengatur batas peta */}
         {markers.map((marker, index) => (

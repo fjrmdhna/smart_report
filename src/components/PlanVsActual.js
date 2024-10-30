@@ -1,19 +1,27 @@
 // src/components/PlanVsActual.js
 import React, { useMemo } from 'react';
 import { Bar } from 'react-chartjs-2';
-import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend
+} from 'chart.js';
 
-// Register Chart.js components
+// Mendaftarkan komponen Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-// Indonesian month names
+// Nama bulan dalam Bahasa Indonesia
 const monthNames = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
 ];
 
 /**
- * Convert 'MM-YYYY' to 'NamaBulan-YYYY'
+ * Mengonversi 'MM-YYYY' menjadi 'NamaBulan-YYYY'
  * @param {string} label 
  * @returns {string}
  */
@@ -66,6 +74,7 @@ const PlanVsActual = ({ data }) => {
 
   const options = useMemo(() => ({
     responsive: true,
+    maintainAspectRatio: false, // Mengizinkan chart menyesuaikan ukuran kontainer
     plugins: {
       legend: { 
         position: 'top', 
@@ -88,7 +97,13 @@ const PlanVsActual = ({ data }) => {
           text: 'Month-Year', 
           font: { size: 14, weight: 'bold' } 
         },
-        ticks: { font: { size: 12 } },
+        ticks: { 
+          font: { size: 12 },
+          maxRotation: 45, // Mengurangi rotasi label pada sumbu X
+          minRotation: 0,
+          autoSkip: true,
+          maxTicksLimit: 6, // Membatasi jumlah tick maksimum
+        },
       },
       y: {
         title: { 
@@ -105,7 +120,7 @@ const PlanVsActual = ({ data }) => {
   }), []);
 
   return (
-    <div>
+    <div style={{ width: '100%', height: '100%' }}> {/* Menyesuaikan ukuran dengan kontainer */}
       <Bar data={chartData} options={options} />
     </div>
   );

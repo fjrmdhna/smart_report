@@ -13,7 +13,7 @@ import { Container, Row, Col, Card, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Dashboard = () => {
-  const [data, setData] = useState({ markers: [], filters: [], siteStatus: {} }); // State to store processed data
+  const [data, setData] = useState({ markers: [], filters: [], siteStatus: {} });
   const [filteredMarkers, setFilteredMarkers] = useState([]);
   const [planVsActualData, setPlanVsActualData] = useState({
     labels: [],
@@ -22,7 +22,7 @@ const Dashboard = () => {
     planRFS: [],
     actualRFS: [],
   });
-  const [filteredSiteStatus, setFilteredSiteStatus] = useState({}); // Add this state
+  const [filteredSiteStatus, setFilteredSiteStatus] = useState({});
   const [selectedFilters, setSelectedFilters] = useState({
     region: 'All',
     priority: 'All',
@@ -40,8 +40,8 @@ const Dashboard = () => {
       reader.onload = async (event) => {
         const result = await processDataFromExcel(event.target.result);
         setData(result);
-        setFilteredMarkers(result.markers); // Initially, all markers are displayed
-        setFilteredSiteStatus(result.siteStatus); // Initially, siteStatus from all data
+        setFilteredMarkers(result.markers);
+        setFilteredSiteStatus(result.siteStatus);
       };
       reader.readAsArrayBuffer(file);
     }
@@ -84,7 +84,7 @@ const Dashboard = () => {
       </Form.Group>
 
       <Row className="mb-4">
-        <Col md={3}>
+        <Col xs={12} md={3}>
           <Card className="h-100">
             <Card.Body>
               <Filter
@@ -95,9 +95,9 @@ const Dashboard = () => {
             </Card.Body>
           </Card>
         </Col>
-        <Col md={9}>
+        <Col xs={12} md={9}>
           <Card className="h-100">
-            <Card.Body>
+            <Card.Body style={{ height: '400px' }}> {/* Menetapkan tinggi pada PlanVsActual Card */}
               <PlanVsActual data={planVsActualData} />
             </Card.Body>
           </Card>
@@ -105,16 +105,16 @@ const Dashboard = () => {
       </Row>
 
       <Row>
-        <Col md={6} className="mb-4">
+        <Col xs={12} md={6} className="mb-4">
           <Card className="h-100">
-            <Card.Body>
+            <Card.Body style={{ height: '400px' }}> {/* Menetapkan tinggi pada CoverageMap Card */}
               <CoverageMap markers={filteredMarkers} />
             </Card.Body>
           </Card>
         </Col>
-        <Col md={6} className="mb-4">
+        <Col xs={12} md={6} className="mb-4">
           <Card className="h-100">
-            <Card.Body>
+            <Card.Body style={{ overflowY: 'auto', maxHeight: '400px' }}>
               <SiteStatusTable data={filteredSiteStatus} />
             </Card.Body>
           </Card>
