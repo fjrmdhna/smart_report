@@ -1,6 +1,10 @@
 // src/components/Dashboard.js
 import React, { useState, useEffect } from 'react';
-import { processDataFromExcel, applyFilters, generatePlanVsActualData } from '../utils/dataFormatter';
+import {
+  processDataFromExcel,
+  applyFilters,
+  generatePlanVsActualData,
+} from '../utils/dataFormatter';
 import Filter from './Filter';
 import PlanVsActual from './PlanVsActual';
 import CoverageMap from './CoverageMap';
@@ -9,22 +13,22 @@ import { Container, Row, Col, Card, Form } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Dashboard = () => {
-  const [data, setData] = useState({ markers: [], filters: [], siteStatus: {} });  // State untuk menyimpan data yang diolah
+  const [data, setData] = useState({ markers: [], filters: [], siteStatus: {} }); // State to store processed data
   const [filteredMarkers, setFilteredMarkers] = useState([]);
   const [planVsActualData, setPlanVsActualData] = useState({
     labels: [],
     planRFI: [],
     actualRFI: [],
     planRFS: [],
-    actualRFS: []
+    actualRFS: [],
   });
-  const [filteredSiteStatus, setFilteredSiteStatus] = useState({}); // Tambahkan state ini
+  const [filteredSiteStatus, setFilteredSiteStatus] = useState({}); // Add this state
   const [selectedFilters, setSelectedFilters] = useState({
     region: 'All',
     priority: 'All',
     siteCategory: 'All',
     ranVendor: 'All',
-    program: 'All'
+    program: 'All',
   });
   const [fileName, setFileName] = useState('Please Choose a file...');
 
@@ -36,14 +40,14 @@ const Dashboard = () => {
       reader.onload = async (event) => {
         const result = await processDataFromExcel(event.target.result);
         setData(result);
-        setFilteredMarkers(result.markers); // Awalnya, semua markers ditampilkan
-        setFilteredSiteStatus(result.siteStatus); // Awalnya, siteStatus dari semua data
+        setFilteredMarkers(result.markers); // Initially, all markers are displayed
+        setFilteredSiteStatus(result.siteStatus); // Initially, siteStatus from all data
       };
       reader.readAsArrayBuffer(file);
     }
   };
 
-  // Update filteredMarkers ketika selectedFilters berubah
+  // Update filteredMarkers when selectedFilters change
   useEffect(() => {
     if (data.markers) {
       const newFilteredMarkers = applyFilters(data.markers, selectedFilters);
@@ -51,15 +55,15 @@ const Dashboard = () => {
     }
   }, [selectedFilters, data.markers]);
 
-  // Update planVsActualData dan filteredSiteStatus ketika filteredMarkers berubah
+  // Update planVsActualData and filteredSiteStatus when filteredMarkers change
   useEffect(() => {
     if (filteredMarkers) {
       const newPlanVsActualData = generatePlanVsActualData(filteredMarkers);
       setPlanVsActualData(newPlanVsActualData);
 
-      // Hitung siteStatus berdasarkan filteredMarkers
+      // Calculate siteStatus based on filteredMarkers
       const statusCounts = {};
-      filteredMarkers.forEach(marker => {
+      filteredMarkers.forEach((marker) => {
         const status = marker.status || 'Unknown';
         statusCounts[status] = (statusCounts[status] || 0) + 1;
       });
