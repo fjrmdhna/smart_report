@@ -2,7 +2,9 @@
 .custom-navbar {
     background-color: white;
     border-bottom: 2px solid #f1c40f; /* Garis bawah kuning */
-    padding: 0.5rem 1rem;
+    padding: 1rem 1rem;
+    padding-left: 15px; /* Menambahkan padding kiri sesuai kebutuhan */
+    padding-right: 15px; /* Menambahkan padding kanan */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -14,12 +16,14 @@
     font-weight: bold;
     font-size: 1.5em;
     text-decoration: none;
-    padding-left: 10px; /* Tambahkan padding kiri untuk memberi jarak */
+    margin-right: 20px; /* Jarak antara logo dan tautan navigasi */
+    padding: 0; /* Menghapus padding default */
 }
 
+/* Mengatur logo */
 .custom-navbar .navbar-logo {
     height: 40px;
-    margin-right: 15px;
+    margin-right: 10px;
 }
 
 /* Links pada navbar */
@@ -43,17 +47,18 @@
 /* Responsive navbar adjustments */
 @media (max-width: 768px) {
     .custom-navbar {
-        padding: 0.5rem 1rem; /* Pastikan padding kiri dan kanan ada pada layar kecil */
+        padding-left: 10px; /* Sesuaikan padding kiri pada layar kecil */
+        padding-right: 10px;
     }
 
     .custom-navbar .navbar-brand-custom {
         font-size: 1.2em;
-        padding-left: 10px; /* Tambahkan padding kiri untuk logo di layar kecil */
+        margin-right: 10px;
     }
 
     .custom-navbar .navbar-logo {
         height: 30px;
-        margin-right: 10px; /* Kurangi jarak pada layar kecil */
+        margin-right: 5px;
     }
 
     .custom-navbar .navbar-toggler {
