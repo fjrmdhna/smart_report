@@ -11,20 +11,20 @@ const Notification = () => {
       title: 'Discussion about Dashboard',
       content: "Let's discuss the features that need to be added to the dashboard.",
       author: 'User1',
-      createdAt: '2023-10-28',
+      createdAt: '2024-10-28',
       commentsCount: 5,
       comments: [
         {
           id: 1,
           author: 'User2',
           content: 'I think we need to add new graphics.',
-          createdAt: '2023-10-28',
+          createdAt: '2024-10-28',
         },
         {
           id: 2,
           author: 'User3',
           content: 'Agreed, and also perhaps a more detailed filter feature.',
-          createdAt: '2023-10-29',
+          createdAt: '2024-10-29',
         },
       ],
     },
@@ -33,14 +33,14 @@ const Notification = () => {
       title: 'Latest Data Visualization',
       content: 'What do you think of the newly added data visualizations?',
       author: 'User2',
-      createdAt: '2023-10-29',
+      createdAt: '2024-10-29',
       commentsCount: 3,
       comments: [
         {
           id: 1,
           author: 'User4',
           content: 'The visualization is very helpful!',
-          createdAt: '2023-10-29',
+          createdAt: '2024-10-29',
         },
         // Tambahkan Comment dummy lainnya jika diperlukan
       ],

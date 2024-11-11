@@ -20,7 +20,6 @@ const MyNavbar = () => {
         <Nav className="navbar-links">
           <Nav.Link as={Link} to="/">Dashboard</Nav.Link>
           <Nav.Link as={Link} to="/notification">Notification</Nav.Link>
-          <Nav.Link as={Link} to="/planning">Planning</Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
