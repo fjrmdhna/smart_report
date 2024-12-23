@@ -1,67 +1,70 @@
-/* Navbar styling */
+/* src/components/Navbar.css */
+
+/* Navbar styling - TANPA margin-left di sini */
 .custom-navbar {
     background-color: white;
     border-bottom: 2px solid #f1c40f; /* Garis bawah kuning */
-    padding: 1rem 1rem;
-    padding-left: 15px; /* Menambahkan padding kiri sesuai kebutuhan */
-    padding-right: 15px; /* Menambahkan padding kanan */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Logo dan link brand pada navbar */
-.custom-navbar .navbar-brand-custom {
+    padding: 1rem 1rem;
+  }
+  
+  /* Merek brand pada navbar */
+  /* DI SINILAH kita beri margin-left agar logo bergeser */
+  .navbar-brand-custom {
     display: flex;
     align-items: center;
-    color: #4d4d4f; /* Warna abu-abu gelap */
+    color: #4d4d4f;
     font-weight: bold;
     font-size: 1.5em;
     text-decoration: none;
-    margin-right: 20px; /* Jarak antara logo dan tautan navigasi */
-    padding: 0; /* Menghapus padding default */
-}
-
-/* Mengatur logo */
-.custom-navbar .navbar-logo {
+    /* Tambahkan margin-left di sini agar brand (logo) saja yang bergeser ke kanan */
+    margin-left: 20px; 
+    padding: 0;
+  }
+  
+  /* Logo */
+  .navbar-logo {
     height: 40px;
     margin-right: 10px;
-}
-
-/* Links pada navbar */
-.custom-navbar .navbar-links {
+  }
+  
+  /* Links pada navbar */
+  .navbar-links {
     display: flex;
     align-items: center;
-}
-
-.custom-navbar .navbar-links .nav-link {
-    color: #4D4D4F; /* Warna default abu-abu gelap */
+  }
+  
+  .navbar-links .nav-link {
+    color: #4D4D4F;
     font-weight: bold;
     margin-left: 15px;
     text-decoration: none;
     transition: color 0.3s ease;
-}
-
-.custom-navbar .navbar-links .nav-link:hover {
+  }
+  
+  .navbar-links .nav-link:hover {
     color: #e74c3c; /* Warna merah saat hover */
-}
-
-/* Responsive navbar adjustments */
-@media (max-width: 768px) {
+  }
+  
+  /* Responsive navbar adjustments */
+  @media (max-width: 768px) {
     .custom-navbar {
-        padding-left: 10px; /* Sesuaikan padding kiri pada layar kecil */
-        padding-right: 10px;
+      /* Hilangkan margin agar tetap muat di layar kecil */
+      padding: 0.5rem 1rem;
     }
-
-    .custom-navbar .navbar-brand-custom {
-        font-size: 1.2em;
-        margin-right: 10px;
+  
+    .navbar-brand-custom {
+      font-size: 1.2em;
+      margin-left: 10px; /* Sedikit lebih kecil di layar sempit */
     }
-
-    .custom-navbar .navbar-logo {
-        height: 30px;
-        margin-right: 5px;
+  
+    .navbar-logo {
+      height: 30px;
+      margin-right: 5px;
     }
-
-    .custom-navbar .navbar-toggler {
-        padding: 0.25rem 0.75rem;
+  
+    .navbar-toggler {
+      padding: 0.25rem 0.75rem;
     }
-}
+  }
+  

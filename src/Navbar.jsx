@@ -1,8 +1,8 @@
-// src/components/Navbar.js
+// src/components/Navbar.jsx
 import React from 'react';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import logo from './Indosat_Ooredoo_Hutchison.png'; 
+import logo from './Indosat_Ooredoo_Hutchison.png';
 import './Navbar.css';
 
 const MyNavbar = () => {

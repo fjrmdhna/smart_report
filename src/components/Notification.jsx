@@ -59,7 +59,7 @@ const Notification = () => {
   const renderDiscussionList = () => (
     <div>
       <Button variant="primary" className="mb-3">
-      Create a New Topic
+        Create a New Topic
       </Button>
       <div>
         {topics.map((topic) => (
@@ -85,7 +85,7 @@ const Notification = () => {
   const renderDiscussionDetail = () => (
     <div>
       <Button variant="secondary" className="mb-3" onClick={handleBackToList}>
-      Back to Discussion List
+        Back to Discussion List
       </Button>
       <Card className="mb-3 custom-card">
         <Card.Body>
