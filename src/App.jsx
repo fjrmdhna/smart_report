@@ -62,7 +62,7 @@ function App() {
     total: 0,
   });
 
-  // All markers for CoverageMap
+  // All markers untuk CoverageMap
   const [markersForMap, setMarkersForMap] = useState([]);
 
   // Chart data bulanan
@@ -126,7 +126,7 @@ function App() {
         fetchMarkers(selectedFilters, 1, markersPagination.limit);
         fetchSites(selectedFilters, 1, sitesPagination.limit);
 
-        // Fetch all markers for map
+        // **Ambil semua markers untuk CoverageMap dengan filter 'sow' = 'Existing'**
         fetchAllMarkers(selectedFilters);
       } else {
         console.error("Upload failed:", res.data.message);
@@ -176,11 +176,12 @@ function App() {
   };
 
   /**
-   * Fetch all markers for CoverageMap
+   * Fetch all markers untuk CoverageMap dengan filter 'sow' = 'Existing'
    */
   const fetchAllMarkers = async (filtersSel) => {
     try {
-      const params = { ...filtersSel };
+      // Tambahkan 'sow': 'Existing' ke filter
+      const params = { ...filtersSel, sow: "Existing" };
       const res = await axios.get("http://localhost:5000/api/markers/all", { params });
 
       if (res.data.success) {
@@ -205,7 +206,7 @@ function App() {
   };
 
   /**
-   * Fetch chart data from server with current filters
+   * Fetch chart data dari server dengan filter saat ini
    */
   const fetchChartData = async (filtersSel) => {
     try {
@@ -261,7 +262,7 @@ function App() {
   };
 
   /**
-   * Re-fetch markers, sites, and chartData ketika filters berubah
+   * Re-fetch markers, sites, dan chartData ketika filters berubah
    */
   useEffect(() => {
     if (pivotData.length > 0) { // Pastikan data sudah di-upload
@@ -275,12 +276,12 @@ function App() {
         page: 1,
       }));
 
-      // Fetch markers, sites, and chart data dengan filter baru
+      // Fetch markers, sites, dan chart data dengan filter baru
       fetchMarkers(selectedFilters, 1, markersPagination.limit);
       fetchSites(selectedFilters, 1, sitesPagination.limit);
       fetchChartData(selectedFilters);
 
-      // Fetch all markers for map dengan filter baru
+      // **Fetch all markers untuk map dengan filter 'sow' = 'Existing'**
       fetchAllMarkers(selectedFilters);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps

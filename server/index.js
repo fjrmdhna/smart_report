@@ -12,10 +12,10 @@ app.use(cors());
 // Multer memori storage
 const upload = multer({ storage: multer.memoryStorage() });
 
-// In-memory storage for uploaded data (Per Session)
+// In-memory storage untuk data yang diupload (Per Sesi)
 let uploadedData = null;
 
-// Endpoint upload Excel
+// Endpoint untuk mengupload file Excel
 app.post("/api/upload-excel", upload.single("excelFile"), (req, res) => {
   try {
     const fileBuffer = req.file.buffer;
@@ -36,7 +36,7 @@ app.post("/api/upload-excel", upload.single("excelFile"), (req, res) => {
       provinceToCities: result.provinceToCities,
     });
   } catch (error) {
-    console.error("Error parsing Excel on server:", error);
+    console.error("Error parsing Excel di server:", error);
     return res.status(500).json({ success: false, message: "Parsing error" });
   }
 });
@@ -103,7 +103,7 @@ app.get("/api/markers/all", (req, res) => {
       return res.status(400).json({ success: false, message: "No data uploaded." });
     }
 
-    const { province, city, mc, vendor, sow, nc } = req.query;
+    const { province, city, mc, vendor, nc } = req.query;
 
     let filteredMarkers = uploadedData.markers;
 
@@ -120,12 +120,12 @@ app.get("/api/markers/all", (req, res) => {
     if (vendor && vendor !== "All") {
       filteredMarkers = filteredMarkers.filter((m) => m.ranVendor === vendor);
     }
-    if (sow && sow !== "All") {
-      filteredMarkers = filteredMarkers.filter((m) => m.sow === sow);
-    }
     if (nc && nc !== "All") {
       filteredMarkers = filteredMarkers.filter((m) => m.nc === nc);
     }
+
+    // **Tambahkan filter khusus untuk 'Existing'**
+    filteredMarkers = filteredMarkers.filter((m) => m.sow === "Existing");
 
     return res.json({
       success: true,
